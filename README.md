@@ -18,12 +18,10 @@ $ sudo yum install gcc libffi-devel python-devel
 
 Changelog
 
-3.1.4-
-Fixed compilation with mingw and on illumos.
+3.1.4 - Fixed compilation with mingw and on illumos.
 
-3.1.3
-Fixed a compilation issue on Solaris.
-Added a warning when using too few rounds with kdf.
+3.1.3 - Fixed a compilation issue on Solaris.
+        Added a warning when using too few rounds with kdf.
 
 3.1.2
 Fixed a compile issue affecting big endian platforms.
