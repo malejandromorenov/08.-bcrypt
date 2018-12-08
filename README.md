@@ -18,7 +18,7 @@ $ sudo yum install gcc libffi-devel python-devel
 
 Changelog
 
-3.1.4
+3.1.4-
 Fixed compilation with mingw and on illumos.
 
 3.1.3
