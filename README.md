@@ -13,7 +13,7 @@ Note that bcrypt should build very easily on Linux provided you have a C compile
 For Debian and Ubuntu, the following command will ensure that the required dependencies are installed:
 
 $ sudo apt-get install build-essential libffi-dev python-dev
-For Fedora and RHEL-derivatives, the following command will ensure that the required dependencies are installed:
+
 $ sudo yum install gcc libffi-devel python-devel
 
 Changelog
@@ -53,7 +53,7 @@ Hashing and then later checking that a password matches the previous hashed pass
 import bcrypt
 password = b"super secret password"
 # Hash a password for the first time, with a randomly-generated salt
-hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+hashed = bcrypt.hashpw(password, bcrypt.gensalt(14))
 # Check that an unhashed password matches one that has previously been
 # hashed
 if bcrypt.checkpw(password, hashed):
@@ -72,18 +72,6 @@ key = bcrypt.kdf(
 ...     rounds=100)
 Adjustable Work Factor
 One of bcrypt’s features is an adjustable logarithmic work factor. To adjust the work factor merely pass the desired number of rounds to bcrypt.gensalt(rounds=12) which defaults to 12):
-
-import bcrypt
-password = b"super secret password"
-# Hash a password for the first time, with a certain number of rounds
-hashed = bcrypt.hashpw(password, bcrypt.gensalt(14))
-# Check that a unhashed password matches one that has previously been
-#   hashed
-if bcrypt.checkpw(password, hashed):
-print("It Matches!")
-else:
-print("It Does not Match :(")
-Adjustable Prefix
 
 Another one of bcrypt’s features is an adjustable prefix to let you define what libraries you’ll remain compatible with. To adjust this, pass either 2a or 2b (the default) to bcrypt.gensalt(prefix=b"2b") as a bytes object.
 
@@ -105,5 +93,3 @@ This library uses code from OpenBSD.
 
 Security
 bcrypt follows the same security policy as cryptography, if you identify a vulnerability, we ask you to contact us privately.
-
-////////////////////////////////////////////////////////////////////////////////////////////////
