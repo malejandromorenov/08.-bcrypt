@@ -10,7 +10,7 @@ $ pip install bcrypt
 
 Note that bcrypt should build very easily on Linux provided you have a C compiler, headers for Python (if you’re not using pypy), and headers for the libffi libraries available on your system.
 
-For Debian and Ubuntu, the following command will ensure that the required dependencies are installed:
+The following command will ensure that the required dependencies are installed:
 
 $ sudo apt-get install build-essential libffi-dev python-dev
 
