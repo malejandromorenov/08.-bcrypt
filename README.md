@@ -1,7 +1,4 @@
-# bcryptr
-optional instalation
-Project description
-# bcrypt
+bcrypt
 
 Latest Version  https://travis-ci.org/pyca/bcrypt.svg?branch=master
 Modern password hashing for your software and your servers
