@@ -52,13 +52,13 @@ Hashing and then later checking that a password matches the previous hashed pass
 import bcrypt
 password = b"super secret password"
 
-*Hash a password for the first time, with a randomly-generated salt
+*Hash a password for the first time, with a randomly-generated salt*
 
 hashed = bcrypt.hashpw(password, bcrypt.gensalt(14))
 
-*Check that an unhashed password matches one that has previously been
+*Check that an unhashed password matches one that has previously been*
 
-*hashed
+*hashed*
 
 if bcrypt.checkpw(password, hashed):
 
@@ -74,6 +74,7 @@ print("It Does not Match :(")
 
 As of 3.0.0 bcrypt now offers a kdf function which does bcrypt_pbkdf. This KDF is used in OpenSSH’s newer encrypted private key format.
 
+```python
 import bcrypt
 
 key = bcrypt.kdf(
@@ -85,7 +86,7 @@ key = bcrypt.kdf(
 ...     desired_key_bytes=32,
 
 ...     rounds=100)
-
+```
 
 Adjustable Work Factor
 One of bcrypt’s features is an adjustable logarithmic work factor. To adjust the work factor merely pass the desired number of rounds to bcrypt.gensalt(rounds=12) which defaults to 12):
@@ -97,6 +98,7 @@ As of 3.0.0 the $2y$ prefix is still supported in hashpw but deprecated.
 Maximum Password Length
 The bcrypt algorithm only handles passwords up to 72 characters, any characters beyond that are ignored. To work around this, a common approach is to hash a password with a cryptographic hash (such as sha256) and then base64 encode it to prevent NULL byte problems before hashing the result with bcrypt:
 
+```python
 password = b"an incredibly long password" * 10
 
 hashed = bcrypt.hashpw(
@@ -106,14 +108,13 @@ base64.b64encode(hashlib.sha256(password).digest()),
 bcrypt.gensalt()
 
 ... )
+```
 
-
-Compatibility
-
+# Compatibility
 This library should be compatible with py-bcrypt and it will run on Python 2.6+, 3.3+, and PyPy 2.6+.
 
-C Code
+# C Code
 This library uses code from OpenBSD.
 
-Security
+# Security
 bcrypt follows the same security policy as cryptography, if you identify a vulnerability, we ask you to contact us privately.
