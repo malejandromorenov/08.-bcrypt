@@ -7,51 +7,49 @@ Installation
 
 To install bcrypt, simply:
 
+```sh
 $ pip install bcrypt 
+```
 
 Note that bcrypt should build very easily on Linux provided you have a C compiler, headers for Python (if you’re not using pypy), and headers for the libffi libraries available on your system.
 
 The following command will ensure that the required dependencies are installed:
-
+```sh
 $ sudo apt-get install build-essential libffi-dev python-dev
-
 $ sudo yum install gcc libffi-devel python-devel
+```
 
 # Changelog
-3.1.4
-# Fixed compilation with mingw and on illumos.
-3.1.3
-# Fixed a compilation issue on Solaris.
-# Added a warning when using too few rounds with kdf.
-3.1.2
+## 3.1.4
+Fixed compilation with mingw and on illumos.
+## 3.1.3
+Fixed a compilation issue on Solaris.
+Added a warning when using too few rounds with kdf.
+## 3.1.2
 Fixed a compile issue affecting big endian platforms.
 Fixed invalid escape sequence warnings on Python 3.6.
 Fixed building in non-UTF8 environments on Python 2.
-3.1.1
+## 3.1.1
 Resolved a UserWarning when used with cffi 1.8.3.
-3.1.0
+## 3.1.0
 Added support for checkpw, a convenience method for verifying a password.
 Ensure that you get a $2y$ hash when you input a $2y$ salt.
 Fixed a regression where $2a hashes were vulnerable to a wraparound bug.
 Fixed compilation under Alpine Linux.
-3.0.0
+## 3.0.0
 Switched the C backend to code obtained from the OpenBSD project rather than openwall.
 Added support for bcrypt_pbkdf via the kdf function.
-2.0.0
+## 2.0.0
 Added support for an adjustible prefix when calling gensalt.
 Switched to CFFI 1.0+
 
-Usage
+# Usage
 
 Password Hashing
-
 Hashing and then later checking that a password matches the previous hashed password is very simple:
 
-
-
-
+```python
 import bcrypt
-
 password = b"super secret password"
 
 *Hash a password for the first time, with a randomly-generated salt
@@ -69,10 +67,10 @@ print("It Matches!")
 else:
 
 print("It Does not Match :(")
+```
 
 
-
-KDF
+# KDF
 
 As of 3.0.0 bcrypt now offers a kdf function which does bcrypt_pbkdf. This KDF is used in OpenSSH’s newer encrypted private key format.
 
